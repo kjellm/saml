@@ -1,5 +1,7 @@
 source :rubygems
 
+gem 'uuid'
+
 group :development do
   gem 'cucumber'
   gem 'growl'

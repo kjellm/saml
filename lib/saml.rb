@@ -1,4 +1,7 @@
+require 'saml/core/request_abstract_type'
+require 'saml/core/authn_request'
 require 'saml/identity_provider'
+require 'saml/identity_provider_proxy'
 require 'saml/metadata/sso_descriptor_type'
 require 'saml/metadata/idp_sso_descriptor'
 require 'saml/service_provider'
