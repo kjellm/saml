@@ -1,3 +1,4 @@
+require 'saml/bindings/http_redirect'
 require 'saml/core/request_abstract_type'
 require 'saml/core/authn_request'
 require 'saml/identity_provider'
