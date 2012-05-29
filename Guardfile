@@ -1,6 +1,10 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
+guard 'bundler' do
+  watch('Gemfile')
+end
+
 guard 'cucumber' do
   watch(%r{^features/.+\.feature$})
   watch(%r{^features/support/.+$})          { 'features' }
@@ -13,7 +17,3 @@ guard 'rspec', :version => 2 do
   watch('spec/spec_helper.rb')  { "spec" }
 end
 
-
-guard 'bundler' do
-  watch('Gemfile')
-end
