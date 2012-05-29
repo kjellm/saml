@@ -1,6 +1,8 @@
 require 'saml/bindings/http_redirect'
 require 'saml/core/request_abstract_type'
 require 'saml/core/authn_request'
+require 'saml/core/status_response_type'
+require 'saml/core/status_type'
 require 'saml/identity_provider'
 require 'saml/identity_provider_proxy'
 require 'saml/metadata/sso_descriptor_type'
