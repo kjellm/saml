@@ -8,11 +8,14 @@ module SAML
       attr_reader :version
       attr_reader :issue_instant
 
+      attr_accessor :issuer
+
       def initialize(clock_class=Time)
         @id            = UUID.new.generate
         @version       = '2.0'
         @issue_instant = clock_class.now.utc.strftime("%Y-%m-%dT%H:%M:%SZ")
       end
+
 
       def to_xml
         xml = REXML::Document.new
@@ -21,6 +24,12 @@ module SAML
         root.attributes['ID']           = @id
         root.attributes['IssueInstant'] = @issue_instant
         root.attributes['Version']      = @version
+
+        unless @issuer.nil?
+          issuer_node = root.add_element("saml:Issuer",
+                                         { "xmlns:saml" => "urn:oasis:names:tc:SAML:2.0:assertion" })
+          issuer_node.text = @issuer
+        end
         
         xml
       end
