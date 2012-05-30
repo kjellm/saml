@@ -27,12 +27,12 @@ module SAML
           xml.root.elements.should be_empty
         end
 
-        it do
-          attrs = AuthnRequest.new.to_xml.root.attributes
-          attrs.should have(4).items
-          attrs.should include('Version')
-          attrs.should include('ID')
-          attrs.should include('IssueInstant')
+        context "attributes" do
+          subject { AuthnRequest.new.to_xml.root.attributes }
+          it { should have(4).items }
+          it { should include('Version') }
+          it { should include('ID') }
+          it { should include('IssueInstant') }
         end
       end
     end
