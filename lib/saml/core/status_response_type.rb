@@ -10,15 +10,15 @@ module SAML
         response = new
         response.id = REXML::XPath.first(
           xml,
-          "/samlp:StatusResponseType/@ID", 
+          "//@ID", 
           { 'samlp' => 'urn:oasis:names:tc:SAML:2.0:protocol'}
         ).value
         response.version = REXML::XPath.first(
           xml,
-          "/samlp:StatusResponseType/@Version", 
+          "//@Version", 
           { 'samlp' => 'urn:oasis:names:tc:SAML:2.0:protocol'}
         ).value
-        response.status = StatusType.from_xml(REXML::XPath.first(xml, "/samlp:StatusResponseType/samlp:Status", { 'samlp' => 'urn:oasis:names:tc:SAML:2.0:protocol'}))
+        response.status = StatusType.from_xml(REXML::XPath.first(xml, "//samlp:Status", { 'samlp' => 'urn:oasis:names:tc:SAML:2.0:protocol'}))
         response
       end
 
