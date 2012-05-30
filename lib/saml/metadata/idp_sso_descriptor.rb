@@ -1,6 +1,6 @@
 module SAML
   module Metadata
-    class IDPSSODescriptor < SSODescriptorType
+    class IDPSSODescriptor < SSODescriptor
 
       def initialize
         @single_sign_on_services = []

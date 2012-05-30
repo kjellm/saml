@@ -1,4 +1,4 @@
-# StatusResponseType
+# StatusResponse
 # 
 # SAML v2.0 Core
 # 
@@ -13,7 +13,7 @@ require 'rexml/document'
 
 module SAML
   module Core
-    describe StatusResponseType do
+    describe StatusResponse do
 
       #ID [Required]
       #InResponseTo [Optional]
@@ -31,10 +31,10 @@ module SAML
         context "Minimal valid XML" do
           
           subject do
-            r = StatusResponseType.from_xml(REXML::Document.new(<<EOT))
-<sp:StatusResponseType xmlns:sp='urn:oasis:names:tc:SAML:2.0:protocol' ID="1" Version="2.0">
+            r = StatusResponse.from_xml(REXML::Document.new(<<EOT))
+<sp:StatusResponse xmlns:sp='urn:oasis:names:tc:SAML:2.0:protocol' ID="1" Version="2.0">
   <sp:Status><sp:StatusCode Value="Jolly good"/></sp:Status>
-</sp:StatusResponseType>
+</sp:StatusResponse>
 EOT
           end
           

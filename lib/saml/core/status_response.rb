@@ -1,6 +1,6 @@
 module SAML
   module Core
-    class StatusResponseType
+    class StatusResponse
 
       attr_accessor :id
       attr_accessor :version
@@ -18,7 +18,7 @@ module SAML
           "//@Version", 
           { 'samlp' => 'urn:oasis:names:tc:SAML:2.0:protocol'}
         ).value
-        response.status = StatusType.from_xml(REXML::XPath.first(xml, "//samlp:Status", { 'samlp' => 'urn:oasis:names:tc:SAML:2.0:protocol'}))
+        response.status = Status.from_xml(REXML::XPath.first(xml, "//samlp:Status", { 'samlp' => 'urn:oasis:names:tc:SAML:2.0:protocol'}))
         response
       end
 

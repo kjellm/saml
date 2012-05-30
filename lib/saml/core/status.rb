@@ -1,6 +1,6 @@
 module SAML
   module Core
-    class StatusType
+    class Status
 
       attr_accessor :status_code
       #attr_accessor :status_message

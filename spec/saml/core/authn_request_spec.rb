@@ -13,8 +13,8 @@ module SAML
   module Core
     describe AuthnRequest do
 
-      it "should extend RequestAbstractType" do
-        AuthnRequest.new.should be_kind_of(RequestAbstractType)
+      it "should extend RequestAbstract" do
+        AuthnRequest.new.should be_kind_of(RequestAbstract)
       end
 
       %w(Subject NameIDPolicy Conditions RequestedAuthnContext Scoping ForceAuthn IsPassive AssertionConsumerServiceIndex AssertionConsumerServiceURL ProtocolBinding AttributeConsumingServiceIndex ProviderName).each do |attr|

@@ -1,6 +1,6 @@
 module SAML
   module Core
-    class Response < StatusResponseType
+    class Response < StatusResponse
     end
   end
 end

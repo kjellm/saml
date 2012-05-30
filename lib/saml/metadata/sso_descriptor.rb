@@ -1,6 +1,6 @@
 module SAML
   module Metadata
-    class SSODescriptorType
+    class SSODescriptor
 
       def add_artifact_resolution_service(*args)
         raise 'Unimplemented feature: ArtifactResolutionService'

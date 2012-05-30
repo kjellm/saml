@@ -1,4 +1,4 @@
-# StatusType
+# Status
 # 
 # SAML v2.0 Core
 # 
@@ -11,7 +11,7 @@ require 'spec_helper'
 
 module SAML
   module Core
-    describe StatusType do
+    describe Status do
       it "should only allow the following top-level status codes"
       # urn:oasis:names:tc:SAML:2.0:status:Success
       #   The request succeeded. Additional information MAY be returned in the <StatusMessage> and/or <StatusDetail> elements.

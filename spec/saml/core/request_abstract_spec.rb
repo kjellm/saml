@@ -1,4 +1,4 @@
-# RequestAbstractType
+# RequestAbstract
 # 
 # SAML v2.0 Core
 # 
@@ -11,7 +11,7 @@ require 'spec_helper'
 
 module SAML
   module Core
-    describe RequestAbstractType do
+    describe RequestAbstract do
 
       it "should have a ID conforming to the xs:ID data type" do
         subject.id.should match(/[[:word:]-]+/)
@@ -27,7 +27,7 @@ module SAML
         it "should be set to now" do
           t = double(Time)
           t.should_receive(:now).and_return(Time.now)
-          RequestAbstractType.new(t)
+          RequestAbstract.new(t)
         end
       end
         

@@ -3,7 +3,7 @@ require "rexml/xpath"
 
 module SAML
   module Core
-    class AuthnRequest < RequestAbstractType
+    class AuthnRequest < RequestAbstract
 
     end
   end

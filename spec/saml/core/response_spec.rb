@@ -13,7 +13,7 @@ module SAML
   module Core
     describe Response do
 
-      it { should be_kind_of(StatusResponseType) }
+      it { should be_kind_of(StatusResponse) }
 
     end
   end

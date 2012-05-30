@@ -2,10 +2,10 @@ require 'spec_helper'
 
 module SAML
   module Metadata
-    describe SSODescriptorType do
+    describe SSODescriptor do
 
       before(:each) do
-        @meta = SSODescriptorType.new
+        @meta = SSODescriptor.new
       end
       
       context "Unsupported features" do

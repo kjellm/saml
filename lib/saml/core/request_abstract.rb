@@ -2,7 +2,7 @@ require 'uuid'
 
 module SAML
   module Core
-    class RequestAbstractType
+    class RequestAbstract
 
       attr_reader :id
       attr_reader :version
