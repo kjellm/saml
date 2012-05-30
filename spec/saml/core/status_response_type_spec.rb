@@ -33,7 +33,7 @@ module SAML
           subject do
             r = StatusResponseType.from_xml(REXML::Document.new(<<EOT))
 <sp:StatusResponseType xmlns:sp='urn:oasis:names:tc:SAML:2.0:protocol' ID="1" Version="2.0">
-  <sp:Status><sp:StatusCode>Jolly good</sp:StatusCode></sp:Status>
+  <sp:Status><sp:StatusCode Value="Jolly good"/></sp:Status>
 </sp:StatusResponseType>
 EOT
           end

@@ -11,12 +11,12 @@ module SAML
         status = new
         status.status_code = REXML::XPath.first(
           xml,
-          "//samlp:Status/samlp:StatusCode", 
+          "//samlp:Status/samlp:StatusCode/@Value", 
           { 'samlp' => 'urn:oasis:names:tc:SAML:2.0:protocol'}
-        ).text
+        ).value
         status
       end
-
+      
     end
   end
 end
