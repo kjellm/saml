@@ -8,16 +8,8 @@ module SAML
 
       def self.from_xml(xml)
         response = new
-        response.id = REXML::XPath.first(
-          xml,
-          "//@ID", 
-          { 'samlp' => 'urn:oasis:names:tc:SAML:2.0:protocol'}
-        ).value
-        response.version = REXML::XPath.first(
-          xml,
-          "//@Version", 
-          { 'samlp' => 'urn:oasis:names:tc:SAML:2.0:protocol'}
-        ).value
+        response.id = REXML::XPath.first(xml, "//@ID", XMLNamespaces).value
+        response.version = REXML::XPath.first(xml, "//@Version", XMLNamespaces).value
         response.status = Status.from_xml(REXML::XPath.first(xml, "//samlp:Status", { 'samlp' => 'urn:oasis:names:tc:SAML:2.0:protocol'}))
         response
       end

@@ -7,7 +7,6 @@ module SAML
       #attr_accessor :status_detail
       
       def self.from_xml(xml)
-        puts xml
         status = new
         status.status_code = REXML::XPath.first(
           xml,
