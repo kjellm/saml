@@ -25,13 +25,13 @@ module SAML
           let(:xml) { double('XMLDocument').as_null_object }
 
           it "should accept a relay_state and URL encode it" do
-            request = subject.build_request_url(@location, xml, 'A relay state')
+            request = subject.build_request_url(location, xml, 'A relay state')
             request.should =~ /RelayState=A\+relay\+state/
           end
 
           it "should not accept relay_state longer than 80 bytes" do
             expect {
-              subject.build_request_url(@location, xml, 'x'*81)
+              subject.build_request_url(location, xml, 'x'*81)
             }.to raise_error(ArgumentError)
           end
         end
