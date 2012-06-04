@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/kjellm/saml.png)](http://travis-ci.org/kjellm/saml)
+
 ## Specifiation documents
 
 Located at http://docs.oasis-open.org/security/saml/v2.0/
