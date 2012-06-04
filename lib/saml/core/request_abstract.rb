@@ -16,11 +16,16 @@ module SAML
         @issue_instant = clock_class.now.utc.strftime("%Y-%m-%dT%H:%M:%SZ")
       end
 
+      def xml_document
+        xml = REXML::Document.new
+        root = xml.add_element("samlp:RequestAbstract",
+                               { "xmlns:samlp" => "urn:oasis:names:tc:SAML:2.0:protocol" })
+      end
+
 
       def to_xml
-        xml = REXML::Document.new
-        root = xml.add_element("samlp:AuthnRequest",
-                               { "xmlns:samlp" => "urn:oasis:names:tc:SAML:2.0:protocol" })
+        xml = xml_document
+        root = xml.root
         root.attributes['ID']           = @id
         root.attributes['IssueInstant'] = @issue_instant
         root.attributes['Version']      = @version
