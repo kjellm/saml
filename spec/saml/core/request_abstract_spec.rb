@@ -14,7 +14,7 @@ module SAML
     describe RequestAbstract do
 
       it "should have a ID conforming to the xs:ID data type" do
-        subject.id.should match(/[[:word:]-]+/)
+        subject.id.should match(/[A-Za-z0-9-]+/)
       end
 
       its(:version) { should == "2.0" }

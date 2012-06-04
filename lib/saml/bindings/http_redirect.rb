@@ -33,6 +33,7 @@ module SAML
       end
 
       def inflate(str)
+        # FIXME do we never need to URL.decode?
         decompress(base64_dec(str))
       end
 
