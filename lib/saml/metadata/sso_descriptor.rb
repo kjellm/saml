@@ -1,25 +1,21 @@
+require 'saml/metadata/role_descriptor'
+
 module SAML
   module Metadata
-    class SSODescriptor
+    class SSODescriptor < RoleDescriptor
 
-      def add_artifact_resolution_service(*args)
-        raise 'Unimplemented feature: ArtifactResolutionService'
+      def initialize
+        super
+        @single_logout_services = []
       end
 
-      
-      def add_manage_name_id_service(*args)
-        raise 'Unimplemented feature: ManageNameIDService'
+      def add_single_logout_service(slo)
+        @single_logout_services << slo
       end
 
-      
-      def add_name_id_format(*args)
-        raise 'Unimplemented feature: NameIDFormat'
+      def single_logout_services
+        @single_logout_services.clone
       end
-
-      def add_single_logout_service(*args)
-        raise 'Unimplemented feature: SingleLogoutService'
-      end
-
       
     end
   end

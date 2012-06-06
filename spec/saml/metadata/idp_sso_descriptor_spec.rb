@@ -16,7 +16,7 @@ module SAML
       end
 
       it "should be able to hold SingleSignOnService metadata" do
-        @meta.add_single_sign_on_service(double('singel-sign-on-service'))
+        @meta.add_single_signon_service(double('singel-sign-on-service'))
       end
 
 

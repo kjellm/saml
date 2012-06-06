@@ -2,8 +2,7 @@ require 'spec_helper'
 
 module SAML
   module Metadata
-    describe SSODescriptor do
-
+    describe SPSSODescriptor do
     end
   end
 end

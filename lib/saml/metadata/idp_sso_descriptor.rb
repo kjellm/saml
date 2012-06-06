@@ -3,15 +3,20 @@ module SAML
     class IDPSSODescriptor < SSODescriptor
 
       def initialize
-        @single_sign_on_services = []
+        super
+        @single_signon_services = []
       end
       
       def want_authn_requests_signed?
         false
       end
 
-      def add_single_sign_on_service(service)
-        @single_sign_on_services << service
+      def add_single_signon_service(service)
+        @single_signon_services << service
+      end
+
+      def single_signon_services
+        @single_signon_services.clone
       end
 
       def add_name_id_mapping_service(*args)
