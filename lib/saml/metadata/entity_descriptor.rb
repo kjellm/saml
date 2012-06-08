@@ -3,28 +3,37 @@ module SAML
     class EntityDescriptor
       
       attr_accessor :entity_id
-      attr_accessor :idp_sso_descriptors
-      attr_accessor :sp_sso_descriptors
 
-      def initialize
-        @sp_sso_descriptors = []
-        @idp_sso_descriptors = []
+      def self.from_xml(xml)
+        allocate.from_xml(xml)
       end
 
-      def add_sp_sso_descriptor(descriptor)
-        @sp_sso_descriptors << descriptor
+      def from_xml(xml)
+        @entity_id = xml.attributes['entityID']
+        @sp_sso_descriptors = xml.get_elements('md:SPSSODescriptor').map do |elem|
+          SPSSODescriptor.from_xml(elem)
+        end
+        @idp_sso_descriptors = xml.get_elements('md:IDPSSODescriptor').map do |elem|
+          IDPSSODescriptor.from_xml(elem)
+        end
+        require 'pry'; binding.pry
+        self
       end
 
       def sp_sso_descriptors
         @sp_sso_descriptors.clone
       end
 
-      def add_idp_sso_descriptor(descriptor)
-        @idp_sso_descriptors << descriptor
-      end
-
       def idp_sso_descriptors
         @idp_sso_descriptors.clone
+      end
+
+      def sp?
+        not @sp_sso_descriptors.empty?
+      end
+
+      def idp?
+        not @idp_sso_descriptors.empty?
       end
 
     end
