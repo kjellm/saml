@@ -1,5 +1,7 @@
+require 'saml/bindings'
 require 'saml/bindings/http_post'
 require 'saml/bindings/http_redirect'
+
 require 'saml/core/assertion'
 require 'saml/core/attribute'
 require 'saml/core/attribute_statement'

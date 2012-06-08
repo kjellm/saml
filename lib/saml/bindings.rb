@@ -1,8 +1,8 @@
 module SAML
-  class Bindings
+  module Bindings
 
-    def self.from_uri(uri)
-      klass = case uri
+    def self.from_endpoint(endpoint)
+      klass = case endpoint.binding
               when "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
                 Bindings::HTTPPost
               when "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
