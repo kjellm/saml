@@ -13,25 +13,33 @@ module SAML
   module Bindings
     describe HTTPRedirect do
 
-      let(:location) { '' }
+      let :endpoint do
+        endpoint = double('Endpoint')
+        endpoint.stub(:location).and_return('')
+        endpoint
+      end
+        
+      let(:http) { double('HTTP') }
 
-      describe "#build_request_url" do
+      describe "#send_request" do
         it "should base64 and url encode the SAMLRequest query parameter" do
-          xml = Core::AuthnRequest.new.to_xml
-          subject.build_request_url(location, xml).should =~ /\?SAMLRequest=[A-za-z0-9%]+/
+          sr = Core::AuthnRequest.new
+          http.should_receive(:redirect).with(/\?SAMLRequest=[A-za-z0-9%]+/)
+
+          subject.send_request(http, endpoint, sr)
         end
       
         context "with relay_state parameter" do
-          let(:xml) { double('XMLDocument').as_null_object }
+          let(:saml_request) { double('SAMLRequest').as_null_object }
 
           it "should accept a relay_state and URL encode it" do
-            request = subject.build_request_url(location, xml, 'A relay state')
-            request.should =~ /RelayState=A\+relay\+state/
+            http.should_receive(:redirect).with(/RelayState=A\+relay\+state/)
+            subject.send_request(http, endpoint, saml_request, 'A relay state')
           end
 
           it "should not accept relay_state longer than 80 bytes" do
             expect {
-              subject.build_request_url(location, xml, 'x'*81)
+              subject.send_request(http, endpoint, saml_request, 'x'*81)
             }.to raise_error(ArgumentError)
           end
         end
