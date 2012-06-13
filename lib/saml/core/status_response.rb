@@ -2,16 +2,21 @@ module SAML
   module Core
     class StatusResponse
 
-      attr_accessor :id
-      attr_accessor :version
-      attr_accessor :status
+      attr_reader :id
+      attr_reader :version
+      attr_reader :status
 
-      def self.from_xml(xml)
-        response = new
-        response.id = REXML::XPath.first(xml, "//@ID", XMLNamespaces).value
-        response.version = REXML::XPath.first(xml, "//@Version", XMLNamespaces).value
-        response.status = Status.from_xml(REXML::XPath.first(xml, "//samlp:Status", { 'samlp' => 'urn:oasis:names:tc:SAML:2.0:protocol'}))
-        response
+      def self.from_xml(xml); new.from_xml(xml); end
+      
+      def from_xml(xml)
+        @id      = xml.attributes["ID"]
+        @version = xml.attributes["Version"]
+        @status  = Status.from_xml(xml.get_elements("//samlp:Status"))
+        self
+      end
+
+      def success?
+        status.success?
       end
 
     end
