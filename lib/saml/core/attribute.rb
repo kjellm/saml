@@ -18,7 +18,6 @@ module SAML
           values << av.to_s
         end
         attribute.attribute_values = values
-        #require "pry"; binding.pry; 
         attribute
       end
     end

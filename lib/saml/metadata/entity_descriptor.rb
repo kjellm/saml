@@ -16,7 +16,6 @@ module SAML
         @idp_sso_descriptors = xml.get_elements('md:IDPSSODescriptor').map do |elem|
           IDPSSODescriptor.from_xml(elem)
         end
-        require 'pry'; binding.pry
         self
       end
 
