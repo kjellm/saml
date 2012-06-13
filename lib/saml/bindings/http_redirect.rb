@@ -6,7 +6,7 @@ module SAML
   module Bindings
     class HTTPRedirect
 
-      def send_request(http, endpoint, saml_request, relay_state=nil)
+      def build_request(rack_response, endpoint, saml_request, relay_state=nil)
         unless relay_state.nil?
           raise ArgumentError.new("relay_state must not exceed 80 bytes") if relay_state.bytesize > 80
         end
@@ -15,7 +15,7 @@ module SAML
         query = "SAMLRequest=#{deflated_saml_request}"
         query += "&RelayState=#{url_enc(relay_state)}" unless relay_state.nil?
         url = "#{endpoint.location}?#{query}"
-        http.redirect url
+        rack_response.redirect url
       end
 
       def build_response(rack_request)
