@@ -10,8 +10,6 @@ module SAML
       attr_accessor :attribute_statement
 
       def self.from_xml(xml)
-        XMLNamespaces.each {|k,v| xml.add_namespace(k, v)}
-
         assertion = new
 
         # Mandatory

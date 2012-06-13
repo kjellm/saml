@@ -9,8 +9,6 @@
 
 require 'spec_helper'
 
-require 'rexml/document'
-
 module SAML
   module Core
     describe StatusResponse do
@@ -31,11 +29,12 @@ module SAML
         context "Minimal valid XML" do
           
           subject do
-            r = StatusResponse.from_xml(REXML::Document.new(<<EOT))
+            xml = Document.new(<<EOT)
 <sp:StatusResponse xmlns:sp='urn:oasis:names:tc:SAML:2.0:protocol' ID="1" Version="2.0">
   <sp:Status><sp:StatusCode Value="Jolly good"/></sp:Status>
 </sp:StatusResponse>
 EOT
+            r = StatusResponse.from_xml(xml.root)
           end
           
           its(:id)      { should == "1" }

@@ -16,7 +16,7 @@ module SAML
       describe "#from_xml" do
 
         def xml(str='')
-          REXML::Document.new(<<EOT).root
+          Document.new(<<EOT).root
 <s:Assertion xmlns:s='urn:oasis:names:tc:SAML:2.0:assertion' ID="1" Version="2.0" IssueInstant="2012-01-01T07:00:00Z">
   <s:Issuer>Me</s:Issuer>
   #{str}

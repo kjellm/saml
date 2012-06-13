@@ -3,8 +3,7 @@ module SAML
     class HTTPPost
 
       def build_response(rack_request)
-        xml = REXML::Document.new(decode(rack_request.params["SAMLResponse"])).root
-        Core::XMLNamespaces.each {|k,v| xml.add_namespace(k, v)}
+        xml = Core::Document.new(decode(rack_request.params["SAMLResponse"])).root
         Core::Response.from_xml(xml)
       end
 

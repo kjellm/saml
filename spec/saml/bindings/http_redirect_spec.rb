@@ -19,27 +19,27 @@ module SAML
         endpoint
       end
         
-      let(:http) { double('HTTP') }
+      let(:rake) { double('Rake') }
 
       describe "#send_request" do
         it "should base64 and url encode the SAMLRequest query parameter" do
           sr = Core::AuthnRequest.new
-          http.should_receive(:redirect).with(/\?SAMLRequest=[A-za-z0-9%]+/)
+          rake.should_receive(:redirect).with(/\?SAMLRequest=[A-za-z0-9%]+/)
 
-          subject.send_request(http, endpoint, sr)
+          subject.build_request(rake, endpoint, sr)
         end
       
         context "with relay_state parameter" do
           let(:saml_request) { double('SAMLRequest').as_null_object }
 
           it "should accept a relay_state and URL encode it" do
-            http.should_receive(:redirect).with(/RelayState=A\+relay\+state/)
-            subject.send_request(http, endpoint, saml_request, 'A relay state')
+            rake.should_receive(:redirect).with(/RelayState=A\+relay\+state/)
+            subject.build_request(rake, endpoint, saml_request, 'A relay state')
           end
 
           it "should not accept relay_state longer than 80 bytes" do
             expect {
-              subject.send_request(http, endpoint, saml_request, 'x'*81)
+              subject.build_request(rake, endpoint, saml_request, 'x'*81)
             }.to raise_error(ArgumentError)
           end
         end

@@ -17,9 +17,8 @@ module SAML
       end
 
       def xml_document
-        xml = REXML::Document.new
-        root = xml.add_element("samlp:RequestAbstract",
-                               { "xmlns:samlp" => "urn:oasis:names:tc:SAML:2.0:protocol" })
+        xml = Document.new
+        root = xml.add_element("samlp:RequestAbstract")
       end
 
 
@@ -31,8 +30,7 @@ module SAML
         root.attributes['Version']      = @version
 
         unless @issuer.nil?
-          issuer_node = root.add_element("saml:Issuer",
-                                         { "xmlns:saml" => "urn:oasis:names:tc:SAML:2.0:assertion" })
+          issuer_node = root.add_element("saml:Issuer")
           issuer_node.text = @issuer
         end
         

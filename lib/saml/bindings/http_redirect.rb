@@ -20,8 +20,7 @@ module SAML
 
       def build_response(rack_request)
         xml_str = inflate(rack_request.params["SAMLResponse"])
-        xml = REXML::Document.new(xml_str).root
-        Core::XMLNamespaces.each {|k,v| xml.add_namespace(k, v)}
+        xml = Core::Document.new(xml_str).root
         Core::Response.from_xml(xml)
       end
 

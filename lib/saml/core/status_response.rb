@@ -11,7 +11,7 @@ module SAML
       def from_xml(xml)
         @id      = xml.attributes["ID"]
         @version = xml.attributes["Version"]
-        @status  = Status.from_xml(xml.get_elements("//samlp:Status"))
+        @status  = Status.from_xml(xml.get_elements("samlp:Status").first)
         self
       end
 
