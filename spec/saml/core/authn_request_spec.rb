@@ -30,7 +30,6 @@ module SAML
             r = AuthnRequest.new
             r.issuer = "me"
             xml = r.to_xml.root
-            puts xml.to_s
             xml.get_elements('saml:Issuer').first.text.should == "me"
           end
         end

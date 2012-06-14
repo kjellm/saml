@@ -13,10 +13,11 @@ module SAML
       # See REXML::Document#add_element
       #
       # Makes sure that all namespaces are added to the root element.
-      def add_element(name)
+      def add_element(name, attrs={})
         ns = XMLNamespaces.map {|k, v| ["xmlns:#{k}", v]}
         ns = Hash[*ns.flatten]
-        super(name, ns)
+        attrs.merge(ns)
+        super(name, attrs)
       end
 
     end

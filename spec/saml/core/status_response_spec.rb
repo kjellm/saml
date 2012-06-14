@@ -34,12 +34,12 @@ module SAML
   <sp:Status><sp:StatusCode Value="Jolly good"/></sp:Status>
 </sp:StatusResponse>
 EOT
-            r = StatusResponse.from_xml(xml.root)
+            StatusResponse.from_xml(xml.root)
           end
           
           its(:id)      { should == "1" }
           its(:version) { should == "2.0" }
-          its(:status)  { subject.status_code.should == "Jolly good"}
+          its(:status)  { subject.status_code.should == "Jolly good" }
         end
 
         it "should fail when required fields are missing"
