@@ -7,8 +7,7 @@ module SAML
 
       def xml_document
         xml = Document.new
-        root = xml.add_element("samlp:AuthnRequest",
-                               { "xmlns:samlp" => "urn:oasis:names:tc:SAML:2.0:protocol" })
+        root = xml.add_element("samlp:AuthnRequest")
       end
 
     end
