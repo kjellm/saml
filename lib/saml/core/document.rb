@@ -16,7 +16,7 @@ module SAML
       def add_element(name, attrs={})
         ns = XMLNamespaces.map {|k, v| ["xmlns:#{k}", v]}
         ns = Hash[*ns.flatten]
-        attrs.merge(ns)
+        attrs.merge!(ns)
         super(name, attrs)
       end
 
