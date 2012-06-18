@@ -2,27 +2,42 @@ module SAML
   module Core
     class Assertion
       
-      attr_accessor :id
-      attr_accessor :version
-      attr_accessor :issue_instant
-      attr_accessor :issuer
+      attr_reader :id
+      attr_reader :version
+      attr_reader :issue_instant
+      attr_reader :issuer
 
-      attr_accessor :attribute_statement
+      attr_reader :subject
+      attr_reader :attribute_statement
+      attr_reader :authn_statements
+      attr_reader :conditions
 
-      def self.from_xml(xml)
-        assertion = new
+      def self.from_xml(xml); new.from_xml(xml); end
 
-        # Mandatory
-        assertion.id            = xml.attributes['ID']
-        assertion.version       = xml.attributes['Version']
-        assertion.issue_instant = xml.attributes['IssueInstant']
+      def initialize
+        @authn_statements = []
+      end
+
+      def from_xml(xml)
+        @id            = xml.attributes['ID']
+        @version       = xml.attributes['Version']
+        @issue_instant = xml.attributes['IssueInstant']
         
-        # Optional
+        subject_element = xml.get_elements('saml:Subject')
+        unless subject_element.empty?
+          @subject = Subject.from_xml(attribut.first)
+        end
+
         attribute_statements = xml.get_elements('saml:AttributeStatement')
         unless attribute_statements.empty?
-          assertion.attribute_statement = AttributeStatement.from_xml(attribute_statements.first)
+          @attribute_statement = AttributeStatement.from_xml(attribute_statements.first)
         end
-        assertion
+
+        xml.get_elements('saml:AuthnStatement').each do |as|
+          @authn_statements << AuthnStatement.from_xml(as)
+        end
+
+        self
       end
 
     end
