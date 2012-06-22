@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'uuid'
+gemspec
 
 group :development do
   gem 'growl'

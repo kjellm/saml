@@ -26,3 +26,5 @@ require 'saml/metadata/sso_descriptor'
 require 'saml/metadata/idp_sso_descriptor'
 require 'saml/metadata/sp_sso_descriptor'
 require 'saml/metadata/xml_namespaces'
+
+require 'saml/version'
