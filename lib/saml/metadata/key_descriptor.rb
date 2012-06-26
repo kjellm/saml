@@ -10,7 +10,6 @@ module SAML
 
       def from_xml(xml)
         @use = xml.attributes['use']
-        puts xml.to_s(2)
         @x509_certificate = REXML::XPath.first(xml, '//ds:X509Certificate').text
         
         self
