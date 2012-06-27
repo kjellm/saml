@@ -25,7 +25,7 @@ module SAML
         
         subject_element = xml.get_elements('saml:Subject')
         unless subject_element.empty?
-          # @subject = Subject.from_xml(subject_element.first)
+          @subject = Subject.from_xml(subject_element.first)
         end
 
         attribute_statements = xml.get_elements('saml:AttributeStatement')

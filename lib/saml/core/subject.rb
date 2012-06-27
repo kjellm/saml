@@ -4,8 +4,11 @@ module SAML
 
       attr_reader :name_id
 
+      def self.from_xml(xml); new.from_xml(xml); end
+
       def from_xml(xml)
-        @name_id = xml.get_elements('saml:NameID').text
+        @name_id = xml.get_elements('saml:NameID').first.text
+        self
       end
 
     end
