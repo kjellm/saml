@@ -1,3 +1,7 @@
+2012-06-27: Version 0.2
+
+ - Add some convienice methods in Metadata::EntitiesDescriptor
+
 2012-06-22: Version 0.1
 
  - Initial release
