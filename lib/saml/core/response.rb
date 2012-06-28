@@ -19,7 +19,7 @@ module SAML
         self
       end
 
-      def valid?(expected_certificate)
+      def validate(expected_certificate)
         XMLSignature.new(@xml).verify(expected_certificate)
       end
 
