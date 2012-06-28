@@ -1,6 +1,8 @@
 require 'saml/bindings'
+require 'saml/bindings/http_binding'
 require 'saml/bindings/http_post'
 require 'saml/bindings/http_redirect'
+require 'saml/bindings/response'
 
 require 'saml/core/assertion'
 require 'saml/core/attribute'

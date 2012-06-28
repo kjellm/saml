@@ -2,9 +2,11 @@ require "base64"
 require "zlib"
 require "cgi"
 
+require 'saml/bindings/http_binding'
+
 module SAML
   module Bindings
-    class HTTPRedirect
+    class HTTPRedirect < HTTPBinding
 
       def build_request(rack_response, endpoint, saml_request, relay_state=nil)
         unless relay_state.nil?
@@ -18,14 +20,8 @@ module SAML
         rack_response.redirect url
       end
 
-      def build_response(rack_request)
-        xml_str = inflate(rack_request.params["SAMLResponse"])
-        xml = Core::Document.new(xml_str).root
-        Core::Response.from_xml(xml)
-      end
-
       private
-      
+
       # Described in section 3.4.4.1
       def deflate(str)
         url_enc(base64_enc(compress(str)))
@@ -35,7 +31,6 @@ module SAML
         # FIXME do we never need to URL.decode?
         decompress(base64_dec(str))
       end
-
 
       def compress(str)
         z = Zlib::Deflate.deflate(str, Zlib::BEST_COMPRESSION)
@@ -51,14 +46,6 @@ module SAML
         z.inflate(str)
       end
 
-      def base64_enc(str)
-        Base64.encode64(str)
-      end
-
-      def base64_dec(str)
-        Base64.decode64(str)
-      end
-
       def url_enc(str)
         CGI.escape(str)
       end
@@ -67,6 +54,13 @@ module SAML
         CGI.unescape(str)
       end
 
+      def base64_enc(str)
+        Base64.encode64(str)
+      end
+
+      def base64_dec(str)
+        Base64.decode64(str)
+      end
     end
   end
 end

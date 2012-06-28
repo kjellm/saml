@@ -1,15 +1,12 @@
+require "base64"
+
+require 'saml/bindings/http_binding'
+
 module SAML
   module Bindings
-    class HTTPPost
+    class HTTPPost < HTTPBinding
 
-      def build_response(rack_request)
-        xml = Core::Document.new(decode(rack_request.params["SAMLResponse"])).root
-        Core::Response.from_xml(xml)
-      end
-
-      private
-
-      def decode(str)
+      def inflate(str)
         Base64.decode64(str)
       end
 
