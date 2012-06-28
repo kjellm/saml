@@ -46,10 +46,6 @@ module SAML
         end
       end
 
-      %w(Destination Consent Signature Extensions).each do |attr|
-        it "should not support #{attr}"
-      end
-      
     end
   end
 end

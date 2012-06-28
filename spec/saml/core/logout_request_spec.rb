@@ -17,10 +17,6 @@ module SAML
         AuthnRequest.new.should be_kind_of(RequestAbstract)
       end
 
-      %w(NotOnOrAfter Reason BaseID/EncryptedID SessionIndex).each do |attr|
-        it "should not support optional attribute/element #{attr}"
-      end
-
       describe "#to_xml" do
         subject do
           r = LogoutRequest.new

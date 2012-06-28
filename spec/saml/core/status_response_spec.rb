@@ -42,7 +42,6 @@ EOT
           its(:status)  { subject.status_code.should == "Jolly good" }
         end
 
-        it "should fail when required fields are missing"
       end
     end
   end

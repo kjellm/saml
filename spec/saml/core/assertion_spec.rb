@@ -42,7 +42,6 @@ EOT
           end
         end
         
-        it "should fail when required fields are missing"
       end
     end
   end
