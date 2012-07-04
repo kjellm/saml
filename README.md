@@ -6,10 +6,22 @@ SAML implementation for Ruby
 SAML - Security Assertion Markup Language
 
 
+Conformance
+-----------
+
+The library is written with the intention that it can be used for
+implementing both SAML Identity Providers (IdP) and Service Providers
+(SP).
+
+So far I have only implemented what's needed for the feide gem. The
+feide gem is a gem for creating SPs that can talk with the Norwegian
+FEIDE IdP.
+
+
 Install
 -------
 
-gem install skeleton
+gem install saml
 
 
 Usage
@@ -42,12 +54,14 @@ Author
 ------
 
 Kjell-Magne Øierud <kjellm AT oierud DOT net>
-	
+
+
 Bugs
 ----
 
 Report bugs to http://github.com/kjellm/saml/issues
-	
+
+
 License
 -------
 
