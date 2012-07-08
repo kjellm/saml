@@ -10,7 +10,7 @@ module SAML
               else
                 nil
               end
-      klass.new
+      klass.nil? ? nil : klass.new
     end
 
   end
