@@ -1,12 +1,3 @@
-# Attribute
-# 
-# SAML v2.0 Core
-# 
-# Section 2.7.3.1
-#
-# http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf
-#
-
 require 'spec_helper'
 
 module SAML
@@ -27,7 +18,7 @@ EOT
           
           its(:name)             { should == "Foo" }
           its(:name_format)      { should == "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified" }
-          its(:attribute_values) { subject.first.should =~ /Hei/ }
+          its(:attribute_values) { subject.first.text.should == 'Hei' }
 
         end
       end

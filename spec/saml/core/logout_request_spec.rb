@@ -1,21 +1,10 @@
-# LogoutRequest
-# 
-# SAML v2.0 Core
-# 
-# Section 3.7.1
-#
-# http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf
-#
-
 require 'spec_helper'
 
 module SAML
   module Core
     describe LogoutRequest do
 
-      it "should extend RequestAbstract" do
-        AuthnRequest.new.should be_kind_of(RequestAbstract)
-      end
+      it { should be_kind_of(RequestAbstract) }
 
       describe "#to_xml" do
         subject do

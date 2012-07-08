@@ -2,6 +2,12 @@ require 'xml_signature'
 
 module SAML
   module Core
+
+    #
+    # Specified in
+    # {http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf SAML v2.0 Core (PDF)},
+    # Section 3.3.3
+    #
     class Response < StatusResponse
 
       attr_reader :assertions
@@ -19,6 +25,8 @@ module SAML
         self
       end
 
+      # Validates the XML Signature. Throws an exception if validation
+      # fails.
       def validate(expected_certificate)
         XMLSignature.new(@xml).verify(expected_certificate)
       end

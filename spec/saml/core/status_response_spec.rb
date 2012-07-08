@@ -1,28 +1,8 @@
-# StatusResponse
-# 
-# SAML v2.0 Core
-# 
-# Section 3.2.2
-#
-# http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf
-#
-
 require 'spec_helper'
 
 module SAML
   module Core
     describe StatusResponse do
-
-      #ID [Required]
-      #InResponseTo [Optional]
-      #Version [Required]
-      #IssueInstant [Required]
-      #Destination [Optional]
-      #Consent [Optional]
-      #<saml:Issuer> [Optional]
-      #<ds:Signature> [Optional]
-      #<Extensions> [Optional]
-      #<Status> [Required]
 
       describe "#from_xml" do
 

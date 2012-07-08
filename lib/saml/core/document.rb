@@ -2,8 +2,14 @@ require 'rexml/document'
 
 module SAML
   module Core
-    class Document < REXML::Document
 
+    #
+    # Use this class to get a REXML document with all required SAML
+    # XML namespaces defined.
+    #
+    # (Not a SAML specified entity)
+    #
+    class Document < REXML::Document
 
       def initialize(*args)
         super(*args)

@@ -2,6 +2,6 @@ require 'spec_helper'
 
 module SAML
   module Core
-    describe AuthnStatement
+    describe Document
   end
 end

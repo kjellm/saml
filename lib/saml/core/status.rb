@@ -1,10 +1,14 @@
 module SAML
   module Core
+
+    #
+    # Specified in
+    # {http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf SAML v2.0 Core (PDF)},
+    # Section 3.2.2.1
+    #
     class Status
 
       attr_reader :status_code
-      # FIXME attr_reader :status_message
-      # FIXME attr_reader :status_detail
       
       def self.from_xml(xml); new.from_xml(xml); end
 
