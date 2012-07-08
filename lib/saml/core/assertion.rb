@@ -20,10 +20,6 @@ module SAML
 
       def self.from_xml(xml); new.from_xml(xml); end
 
-      def initialize
-        @authn_statements = []
-      end
-
       def from_xml(xml)
         @id            = xml.attributes['ID']
         @version       = xml.attributes['Version']
@@ -39,8 +35,8 @@ module SAML
           @attribute_statement = AttributeStatement.from_xml(attribute_statements.first)
         end
 
-        xml.get_elements('saml:AuthnStatement').each do |as|
-          @authn_statements << AuthnStatement.from_xml(as)
+        @authn_statements = xml.get_elements('saml:AuthnStatement').map do |as|
+          AuthnStatement.from_xml(as)
         end
 
         self
