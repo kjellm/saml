@@ -6,6 +6,12 @@ require 'saml/bindings/http_binding'
 
 module SAML
   module Bindings
+
+    #
+    # Specified in
+    # {http://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf SAML v2.0 Bindings (PDF)},
+    # section 3.4
+    #
     class HTTPRedirect < HTTPBinding
 
       def build_request(rack_response, endpoint, saml_request, relay_state=nil)
